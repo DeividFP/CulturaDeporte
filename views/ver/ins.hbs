@@ -1,0 +1,32 @@
+<center>
+    <div class="card" style="margin-top: 1em; margin-left: 1em; margin-right: 1em;">
+        <div class="card">
+            <div class="card-header">
+                INSCRITOS
+            </div>
+            <div class="card-body" style="text-align: center;">
+                <table class="table">
+                    <thead>
+                        <tr>
+
+                            <th scope="col">MATRÍCULA/BOLETA</th>
+                            <th scope="col">APELLIDOS</th>
+                            <th scope="col">NOMBRE</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each consulta}}
+                        <tr>
+                            <td>{{this.ins_id_mb}}</td>
+                            <td>{{this.reg_pri}} {{this.reg_seg}}</td>
+                            <td>{{this.reg_nom}} </td>
+                            
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</center>

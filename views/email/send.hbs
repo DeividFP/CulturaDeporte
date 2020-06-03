@@ -1,0 +1,10 @@
+<form action="/agregar/activar" method="POST">
+
+    {{#each newLink}}
+    <tr>
+        <td>{{this.mb}}</td> 
+        <td>{{this.pri}}</td> 
+        </tr> 
+    {{/each}}
+    <input type="hidden" value="{{newValue}}">
+</form>

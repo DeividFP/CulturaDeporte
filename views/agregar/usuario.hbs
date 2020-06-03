@@ -1,0 +1,94 @@
+<center>
+    <div class="card" style="width: 75%; margin-top: 1em;">
+        <div class="card">
+            <div class="card-header">
+                REGISTRAR USUARIOS
+            </div>
+            <div class="card-body">
+                <form action="/agregar/usuario" method="POST">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" name="mat_bol" placeholder="MATRÍCULA O BOLETA" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" name="pape" placeholder="PRIMER APELLIDO" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" name="sape" placeholder="SEGUNDO APELLIDO" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" name="nombre" placeholder="NOMBRE(S)" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <input type="date" class="form-control" name="nac" placeholder="FECHA DE NACIMIENTO" required min="1940-01-01" max="2020-01-01">
+                        </div>
+                        <div class="col-sm-4 col-form-label">
+                            <label class="col-sm-4 col-form-label"></label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" name="nss" placeholder="NSS" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-2">
+                            <input type="text" class="form-control" name="calle" placeholder="CALLE" required>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <input type="text" class="form-control" name="next" placeholder="N° EXT" required>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <input type="text" class="form-control" name="nint" placeholder="N° INT">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <input type="text" class="form-control" name="col" placeholder="COLONIA" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <input type="text" class="form-control" name="alc_mun" placeholder="ALCALDÍA/MUNICIPIO" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <input type="email" class="form-control" name="email" placeholder="CORREO ELECTRÓNICO" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="col-sm-4 col-form-label"></label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="tel" class="form-control" name="tel"
+                                placeholder="TELÉFONO DE CONTACTO (10 DÍGITOS)" pattern="[0-9]{10}" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">   
+                            <select id="usert" name="usert" class="custom-select mr-sm-2"  required>
+                                <option selected>SELECCIONE UN TIPO DE USUARIO</option>
+                                {{#each a_rol}}
+                                <option value="{{this.rol_id}}">{{this.rol_descr}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="col-sm-4 col-form-label"></label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <select id="carrera" name="carrera" class="custom-select mr-sm-2" required>
+                                <option selected>SELECCIONE UNA CARRERA</option>
+                                {{#each a_carreer}}
+                                <option value="{{this.carr_id}}">{{this.carr_descr}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                        <button type="reset" class="btn btn-danger">Limpiar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</center>

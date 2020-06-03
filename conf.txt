@@ -1,0 +1,6 @@
+Configuración correo electrónica de prueba:
+
+Correo: pruebas.dfp.ipn@gmail.com
+contraseña: $passw@648
+
+arrancar app con NODE_TLS_REJECT_UNAUTHORIZED='0' npm run dev

@@ -1,0 +1,41 @@
+<div class="card mx-auto" style="width: 50%; margin-top: 1em;">
+    <center>
+        <h5 class="card-header">Editar usuario</h5>
+    </center>
+    <div class="card-body">
+        <form action="/editar/usuario" method="POST">
+            {{#each consulta}}
+            <div class="form-group row">
+                <label for="nombre" class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="nombre"
+                        value="{{this.reg_nom}} {{this.reg_pri}} {{this.reg_seg}}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="matricula" class="col-sm-2 col-form-label">Matrícula</label>
+                <div class="col-sm-10">
+                    <input type="text" readonly name="mat_bol" class="form-control-plaintext" id="matricula"
+                        value="{{this.reg_mb}}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="correo" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="text" name="email" class="form-control-plaintext" id="correo"
+                        value="{{this.reg_email}}" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="tel" class="col-sm-2 col-form-label">Teléfono</label>
+                <div class="col-sm-10">
+                    <input type="text" name="tel" class="form-control-plaintext" id="tel"
+                        value="{{this.reg_tel}}" required>
+                </div>
+            </div>
+
+            <center><button type="submit" class="btn btn-outline-primary">Guardar</button></center>
+            {{/each}}
+        </form>
+    </div>
+</div>

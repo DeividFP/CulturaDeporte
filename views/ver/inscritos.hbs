@@ -1,0 +1,96 @@
+<center>
+  <div class="input-group" style="margin-top: 1em; margin-left: 1em; margin-right: 1em;">
+    <form action="/ver/busq_usr" method="POST">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" name="b" placeholder="MATRÍCULA/BOLETA">
+        <input type="hidden" name="s" value="{{cod}}">
+        <button type="submit" class="btn btn-outline-success">BUSCAR</button>
+      </div>
+    </form>
+  </div>
+</center>
+
+<center>
+    <div class="card" style="margin-top: 1em; margin-left: 1em; margin-right: 1em;">
+        <div class="card">
+            <div class="card-header">
+                INSCRITOS
+            </div>
+            <div class="card-body" style="text-align: center;">
+                <table class="table">
+                    <thead>
+                        <tr>
+
+                            <th scope="col">MATRÍCULA/BOLETA</th>
+                            <th scope="col">APELLIDOS</th>
+                            <th scope="col">NOMBRE</th>
+                            <th scope="col">CRÉDITOS</th>
+                            <th scope="col">HORAS CURSADAS</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each consulta}}
+                        <tr>
+                            <td>{{this.ins_id_mb}}</td>
+                            <td>{{this.reg_pri}} {{this.reg_seg}}</td>
+                            <td>{{this.reg_nom}} </td>
+                            <th>{{this.ins_creditos}}</th>
+                            
+                            <td>
+                                <form action="/agregar/creditos" method="POST">
+                                    <input type="hidden" value="{{cod}}" name="c">
+                                    <input type="hidden" value="{{this.ins_id_mb}}" name="m">
+                                    <input type="text" class="col-md-2" name="cred" value="{{this.ins_horas}}">
+                                    <button type="submit" class="btn btn-info btn-sm">ACEPTAR</button>
+                                </form>
+                            </td>
+
+                            <td>
+
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                    data-target="#exampleModal{{this.ins_id_mb}}">
+                                    ELIMINAR
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal{{this.ins_id_mb}}" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">ESTÁ A PUNTO DE ELIMINAR
+                                                    UN ALUMNO INSCRITO</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ¿DESEA CONTINUAR CON DICHA ACCIÓN?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">CANCELAR</button>
+                                                <form action="/eliminar/eliminar_deA" method="POST">
+                                                    <input type="hidden" value="{{this.ins_id_mb}}" name="u">
+                                                    <input type="hidden" value="{{this.cod}}" name="c">
+                                                    <button type="submit"
+                                                        class="btn btn-danger">ELIMINAR</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</center>

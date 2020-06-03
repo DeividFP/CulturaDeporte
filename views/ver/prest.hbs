@@ -1,0 +1,24 @@
+<div class="card mx-auto mt-4 mb-2" style="width: 80%; ">
+  <h5 class="card-header">Material en préstamo</h5>
+  <div class="card-body">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Matrícula/Boleta</th>
+      <th scope="col">Código</th>
+      <th scope="col">Material</th>
+    </tr>
+  </thead>
+  {{#each consulta}}
+  <tbody>
+      
+      <td><a class="text-dark" href="/ver/datos/usuario/?s={{this.ep_mb}}">{{this.ep_mb}}</a></td>
+      <td>{{this.ep_sku}}</td>
+      <td>{{this.ep_descr}}</td>
+      
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+  </div>
+</div>

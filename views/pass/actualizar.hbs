@@ -1,0 +1,31 @@
+<center>
+    <div class="card mx-auto" style="width: 50%; margin-top: 1em;">
+        <div class="card-header">
+            Cambia tu contraseña
+        </div>
+        <div class="card-body">
+            <form action="/pass/actualizar" method="POST">
+                
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-5">
+                        <input type="password" class="form-control" name="pass1" id="inputPassword" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPasswordRep" class="col-sm-2 col-form-label">Repite Password</label>
+                    <div class="col-sm-5">
+                        <input type="password" class="form-control" name="pass2" id="inputPasswordRep" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPasswordRep" class="col-sm-2 col-form-label">Escribe tu Password actual</label>
+                    <div class="col-sm-5">
+                        <input type="password" class="form-control" name="pass3" id="inputPasswordRep" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">ACEPTAR</button>
+            </form>
+        </div>
+    </div>
+</center>

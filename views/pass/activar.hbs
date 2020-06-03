@@ -1,0 +1,35 @@
+
+<center>
+    <div class="card mx-auto" style="width: 50%; margin-top: 1em;">
+        <div class="card-header">
+            Escoge tu contraseña
+        </div>
+        <div class="card-body">
+            <form action="/pass/activar" method="POST">
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">{{#if value}} Boleta: {{else}} Matrícula
+                        {{/if}}</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control-plaintext" id="staticEmail" name="mat_bol"
+                            value="{{#each a_datos}}{{this.usr_mb}}{{/each}}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                    <div class="col-sm-5">
+                        <input type="password" class="form-control" name="pass1" id="inputPassword">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPasswordRep" class="col-sm-2 col-form-label">Repite Password</label>
+                    <div class="col-sm-5">
+                        <input type="password" class="form-control" name="pass2" id="inputPasswordRep">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">ACEPTAR</button>
+                <input type="hidden" value="{{#each a_datos}} {{this.usr_id}} {{/each}} " name="ide">
+                <input type="hidden" value="{{#each a_datos}}{{this.usr_hashh}}{{/each}}" name="hash">
+            </form>
+        </div>
+    </div>
+</center>

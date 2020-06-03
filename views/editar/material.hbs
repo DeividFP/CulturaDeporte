@@ -1,0 +1,43 @@
+<center>
+    <div class="card" style="width: 65%; margin-top: 1em;">
+        <div class="card">
+            {{#each consulta}}
+            <div class="card-header">
+                EDITAR MATERIAL SKU: {{this.sku}}
+            </div>
+            <div class="card-body">
+                
+                <form action="/editar/material" method="POST">
+                    <div class="form-row">
+                        <input type="hidden" name="sku" value="{{this.sku}}">
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" name="nombre" placeholder="NOMBRE DEL MATERIAL" value="{{this.mat_nombre}}" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-10">
+                            <input type="text" class="form-control" name="desc" placeholder="DESCRIPCIÓN DEL MATERAL" value="{{this.mat_descr}}" required>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <input type="text" class="form-control" name="precio" placeholder="COSTO" value="{{this.mat_costo}}" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-7">
+                            <label for="ingreso">FORMA DE INGRESO</label>
+                            <input type="text" id="ingreso" class="form-control" name="ingreso" value="{{this.mat_tipo_ingreso}}" required>
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="fecha">FECHA DE INGRESO</label>
+                            <input type="date" class="form-control" id="fecha" name="fecha" value="{{this.fechaLe}}" required min="1994-01-01" max='2020-12-31'>
+                        </div>                          
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">ACEPTAR</button>
+                    </div>
+                </form>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</center>

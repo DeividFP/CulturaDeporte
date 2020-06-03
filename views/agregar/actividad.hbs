@@ -1,0 +1,94 @@
+<center>
+    <div class="card " style="width: 75%; margin-top: 1em;">
+        <div class="card">
+            <div class="card-header">
+                REGISTRAR ACTIVIDAD
+            </div>
+            <div class="card-body">
+
+                <form action="/agregar/actividad" method="POST">
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" name="name" placeholder="NOMBRE DE LA ACTIVIDAD"
+                                required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" name="sku" pattern="[0-9A-Z]{5}"
+                                placeholder="IDENTIFICADOR (5 CARACTERES)" required>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" name="pla" placeholder="LUGAR ASIGNADO" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <select name="ins" class="custom-select mr-sm-2" required>
+                                <option selected>SELECCIONE UN INSTRUCTOR</option>
+                                {{#each consulta}}
+                                <option value="{{this.reg_mb}}">{{this.reg_mb}} - {{this.reg_pri}} {{this.reg_seg}} {{this.reg_nom}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <select name="cat" class="custom-select mr-sm-2" required>
+                                <option selected>SELECCIONE UNA CATEGORÍA</option>
+                                {{#each act}}
+                                <option value="{{this.t_act_id}}">{{this.t_act_descr}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label>HORARIO</label>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-sm-1 col-form-label">
+                            <label class="col-sm-4 col-form-label"></label>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="lu">LUNES</label>
+                            <input type="text" id="lu" class="form-control" name="lu" pattern="[0-9]{2}:[0-9]{2}"
+                                placeholder="HORA INICIO">
+                            <input type="text" id="lu" class="form-control mt-1" name="luF" pattern="[0-9]{2}:[0-9]{2}"
+                                placeholder="HORA FIN">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="ma">MARTES</label>
+                            <input type="text" class="form-control" id="ma" name="ma" pattern="[0-9]{2}:[0-9]{2}"
+                                placeholder="HORA INICIO">
+                            <input type="text" id="lu" class="form-control mt-1" name="maF" pattern="[0-9]{2}:[0-9]{2}"
+                                placeholder="HORA FIN">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="mi">MIÉRCOLES</label>
+                            <input type="text" id="mi" class="form-control" name="mi" pattern="[0-9]{2}:[0-9]{2}"
+                                placeholder="HORA INICIO">
+                            <input type="text" id="lu" class="form-control mt-1" name="miF" pattern="[0-9]{2}:[0-9]{2}"
+                                placeholder="HORA FIN">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="ju">JUEVES</label>
+                            <input type="text" class="form-control" id="ju" name="ju" pattern="[0-9]{2}:[0-9]{2}"
+                                placeholder="HORA INICIO">
+                            <input type="text" id="lu" class="form-control mt-1" name="juF" pattern="[0-9]{2}:[0-9]{2}"
+                                placeholder="HORA FIN">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="vi">VIERNES</label>
+                            <input type="text" id="vi" class="form-control" name="vi" pattern="[0-9]{2}:[0-9]{2}"
+                                placeholder="HORA INICIO">
+                            <input type="text" id="lu" class="form-control mt-1" name="viF" pattern="[0-9]{2}:[0-9]{2}"
+                                placeholder="HORA FIN">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">REGISTRAR</button>
+                        <button type="reset" class="btn btn-danger">LIMPIAR</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</center>

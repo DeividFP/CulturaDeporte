@@ -1,0 +1,40 @@
+<center>
+    <div class="card" style="margin-top: 1em; margin-left: 1em; margin-right: 1em;">
+        <div class="card">
+            <div class="card-header">
+                ACTIVIDADES
+            </div>
+            <div class="card-body" style="text-align: center;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">DESCRIPCIÓN</th>
+                            <th scope="col">LUGAR</th>
+                            <th scope="col">LUNES</th>
+                            <th scope="col">MARTES</th>
+                            <th scope="col">MIERCOLES</th>
+                            <th scope="col">JUEVES</th>
+                            <th scope="col">VIERNES</th>
+                            <th scope="col">INSCRITOS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each consulta}}
+                        <tr>
+                            
+                            <td>{{this.act_descr}}</td>
+                            <td>{{this.act_lugar}}</td>
+                            <td>{{this.act_li}}-{{this.act_lf}}</td>
+                            <td>{{this.act_mi}}-{{this.act_mf}}</td>
+                            <td>{{this.act_mii}}-{{thisact_.mif}}</td>
+                            <td>{{this.act_ji}}-{{this.act_jf}}</td>
+                            <td>{{this.act_vi}}-{{this.act_vf}}</td>
+                            <td><a href="/ver/ins/?s={{this.act_cod}}">{{this.inscritos}}</a></td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</center>

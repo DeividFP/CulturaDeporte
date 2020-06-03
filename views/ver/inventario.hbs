@@ -1,0 +1,125 @@
+<center>
+  <div class="input-group" style="margin-top: 1em;margin-left: 3em;margin-right: 3em;">
+    <form action="/ver/busq" method="POST">
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="submit" name="v" value="1" class="btn btn-outline-secondary">EN PRÉSTAMO</button>
+        <button type="submit" name="v" value="2" class="btn btn-outline-primary">DISPONIBLE</button>
+      </div>
+    </form>
+    <form action="/ver/busq" method="POST">
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" name="b" placeholder="SKU O PALABRA CLAVE">
+        <button type="submit" class="btn btn-outline-success">BUSCAR</button>
+      </div>
+    </form>
+  </div>
+</center>
+
+<center>
+  <div class="card" style="margin-top: 1em;margin-left: 3em;margin-right: 3em;">
+    <div class="card">
+      <div class="card-header">
+        INVENTARIO
+      </div>
+      <div class="card-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">SKU</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">DESCRIPCIÓN</th>
+              <th scope="col">COSTO</th>
+              <th scope="col">TIPO DE INGRESO</th>
+              <th scope="col">FECHA DE INGRESO</th>
+              <th scope="col">ESTADO</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each inv}}
+            <tr>
+              <td>{{this.mat_sku}}</td>
+              <td>{{this.mat_nombre}}</td>
+              <td>{{this.mat_descr}}</td>
+              <td>${{this.mat_costo}}</td>
+              <td>{{this.mat_tipo_ingreso}}</td>
+              <td>{{this.fechaI}}</td>
+              <td>{{this.s}}</td>
+              <td>
+                <div class="btn-group" role="group">
+                  <a class="btn btn-info btn-sm" href="/editar/material/?s={{this.mat_sku}}">EDITAR</a>
+                  {{#if this.stat}}<a href="/agregar/prestamo/?s={{this.mat_sku}}" type="button"
+                    class="btn btn-success text-light btn-sm">PRESTAR</a>
+                  {{else}}
+
+                  <form action="/agregar/devolver" method="POST">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal"
+                      data-target="#exampleModal{{this.mat_sku}}">
+                      DEVOLVER
+                    </button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal{{this.mat_sku}}" tabindex="-1" role="dialog"
+                      aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">AVISO</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            ¿QUIERE DEVOLVER ESTE ARTÍCULO?
+                          </div>
+                          <div class="modal-footer">
+                            <input type="hidden" name="id" value="{{this.mat_sku}}">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                            <button type="submit" class="btn btn-primary">ACEPTAR</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  {{/if}}
+                </div>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{this.mat_sku}}">
+                  ELIMINAR
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="delete{{this.mat_sku}}" tabindex="-1" role="dialog" aria-labelledby="delete"
+                  aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="delete">ALERTA</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        ESTÁ A PUNTO DE ELIMINAR
+                        UN MATERIAL ¿DESEA CONTINUAR CON DICHA ACCIÓN?
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCELAR</button>
+                        <form action="/eliminar/material" method="POST">
+                          <input type="hidden" value="{{this.mat_sku}}" name="sku">
+                          <button type="submit" class="btn btn-danger btn">ELIMINAR</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</center>

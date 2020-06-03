@@ -1,0 +1,54 @@
+<center>
+    <div class="card" style="margin-top: 1em; width: 45%;">
+        <div class="card">
+            <div class="card-header">
+                DATOS DEL USUARIO
+            </div>
+            <div class="card-body" style="text-align: center;">
+                <form>
+                    {{#each consulta}}
+                    <div class="form-group row">
+                        <label for="NOMBRE" class="col-sm-4 col-form-label">NOMBRE:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                                value="{{this.reg_nom}} {{this.reg_pri}} {{this.reg_seg}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="mat_bol" class="col-sm-4 col-form-label">MATRÍCULA/BOLETA:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly name="mat_bol" class="form-control-plaintext" id="staticEmail"
+                                value="{{this.reg_mb}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="mat_bol" class="col-sm-4 col-form-label">CORREO ELECTRÓNICO:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly name"email" class="form-control-plaintext" id="staticEmail"
+                                value="{{this.reg_email}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="mat_bol" class="col-sm-4 col-form-label">TELÉFONO:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                                value="{{this.reg_tel}}">
+                        </div>
+                    </div>
+                    {{/each}}
+                    <div class="form-group row">
+                        <label for="cred" class="col-sm-4 col-form-label">CRÉDITOS:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly class="form-control-plaintext" id="cred" value="{{crd}}">
+                        </div>
+                    </div>
+                </form>
+                {{#if isU}}
+                <form action="/ver/sol_cons" method="post">
+                    <button type="submit" class="btn btn-info">SOLICITAR CONSTANCIA</button>
+                </form>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</center>

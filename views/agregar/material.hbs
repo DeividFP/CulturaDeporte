@@ -1,0 +1,46 @@
+<center>
+    <div class="card" style="width: 75%; margin-top: 1em;">
+        <div class="card">
+            <div class="card-header">
+                REGISTRAR MATERIAL
+            </div>
+            <div class="card-body">
+                
+                <form action="/agregar/material" method="POST">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control"  pattern="[0-9A-Z]{10}" id ="sku" name="sku" placeholder="SKU DEL MATERIAL (10 CARACTERES)" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" name="nombre" placeholder="NOMBRE DEL MATERIAL" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-10">
+                            <input type="text" class="form-control" name="desc" placeholder="DESCRIPCIÓN DEL MATERAL" required>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <input type="text" class="form-control" name="precio" placeholder="COSTO" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-7">
+                            <label for="ingreso">TIPO DE INGRESO</label>
+                             <label for="ingreso">FORMA DE INGRESO</label>
+                            <input type="text" id="ingreso" class="form-control" name="ingreso" required>
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="fecha">FECHA DE INGRESO</label>
+                            <input type="date" class="form-control" id="fecha" name="fecha" required min="1994-01-01" max='2020-12-31'>
+                        </div>                        
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" onclick="CheckLong()" class="btn btn-primary">Registrar</button>
+                        <button type="reset" class="btn btn-danger">Limpiar</button>
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</center>
