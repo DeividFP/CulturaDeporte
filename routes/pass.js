@@ -136,7 +136,6 @@ router.post('/recuperar', async(req, res) => {
     });
 
     let consulta = await pool.query('SELECT reg_mb FROM registro WHERE reg_email = ?', [email]);
-    console.log(consulta[0].reg_mb);
     if (consulta.length > 0) {
         let nPa = await helpers.encryptPassword(PR);
         if (await pool.query('UPDATE usr SET usr_pass = ? WHERE usr_mb = ?', [nPa, consulta[0].reg_mb])) {

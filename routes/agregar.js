@@ -10,10 +10,8 @@ const url = 'http://localhost:3000';
 router.get('/usuario', isLoggedIn, async(req, res) => {
     let isA = funcs.isAdmin(req.user.reg_rol);
     if (isA) {
-        let rol = await pool.query('SELECT * FROM rol');
-        let carreer = await pool.query('SELECT * FROM carrera');
-        let a_rol = Array.from(rol);
-        let a_carreer = Array.from(carreer);
+        let a_rol = await pool.query('SELECT * FROM rol');
+        let a_carreer = await pool.query('SELECT * FROM carrera');
         res.render('agregar/usuario', { a_carreer, a_rol, isA });
     } else {
         res.redirect('/');
@@ -127,7 +125,7 @@ router.post('/material', isLoggedIn, async(req, res) => {
                 mat_statuss: 2
             }
             await pool.query('INSERT INTO material SET ?', [newLink]);
-            if (precio > 1) {
+            if (precio < 1) {
                 req.flash('warning', 'Se agregó el material pero debe tener un precio válido');
             } else {
                 req.flash('success', 'Se agregó el material correctamente');
@@ -223,8 +221,7 @@ router.get('/A_actividad', isLoggedIn, async(req, res) => {
         if (typeof u == 'undefined') {
             consulta = await pool.query('SELECT reg_mb, reg_pri, reg_seg, reg_nom, reg_rol FROM registro');
         } else {
-            consu = await pool.query(`BusqAct(${u})`);
-            consulta = consu[0];
+            consulta = await pool.query(`SELECT reg_mb, reg_pri, reg_seg, reg_nom, reg_rol FROM registro WHERE reg_mb LIKE '%${u}%'`);           
         }
         for (let value of consulta) {
             value.s = s;
