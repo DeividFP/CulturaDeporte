@@ -252,7 +252,7 @@ router.post('/sol_cons', isLoggedIn, async(req, res) => {
         port: 465,
         secure: true,
         auth: {
-            user: 'pruebas.dfp.ipn@gmail.com',
+            user: 'pjdpf.ipn@gmail.com',
             pass: '$passw@648'
         }
     });

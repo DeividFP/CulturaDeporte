@@ -117,7 +117,7 @@ router.post('/recuperar', async(req, res) => {
         port: 465,
         secure: true,
         auth: {
-            user: 'pruebas.dfp.ipn@gmail.com',
+            user: 'pjdpf.ipn@gmail.com',
             pass: '$passw@648'
         }
     });
@@ -125,7 +125,7 @@ router.post('/recuperar', async(req, res) => {
     let mailOptions = {
         from: 'Sistema de administración Cultural y Deportiva UPIITA - IPN',
         to: `${email}`,
-        subject: 'Asunto',
+        subject: 'Recuperación de contraseña',
         html: contentHTML
     };
 
