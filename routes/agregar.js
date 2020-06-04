@@ -169,13 +169,13 @@ router.post('/actividad', isLoggedIn, async (req, res) => {
             martes = funcs.checkHor(ma, maF);
         }
         if (mi.length > 0 && miF.length > 0) {
-            miercoles = funcs.checkHor(lu, luF);
+            miercoles = funcs.checkHor(mi, miF);
         }
         if (ju.length > 0 && juF.length > 0) {
-            jueves = funcs.checkHor(lu, luF);
+            jueves = funcs.checkHor(ju, juF);
         }
         if (vi.length > 0 && viF.length > 0) {
-            viernes = funcs.checkHor(lu, luF);
+            viernes = funcs.checkHor(vi, viF);
         }
         if (lunes && martes && miercoles && jueves && viernes) {
             check = true;
