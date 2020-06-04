@@ -18,12 +18,7 @@ router.post('/material', isLoggedIn, async(req, res) => {
 
 router.post('/usuario', isLoggedIn, async(req, res) => {
     const { mb } = req.body;
-    if (await pool.query('DELETE FROM registro where reg_mb = ?', [mb])) {
-        req.flash('success', 'Se eliminó al usuario');
-    } else {
-        req.flash('error', 'Ocurrió un error');
-    }
-
+    await pool.query('DELETE FROM registro where reg_mb = ?', [mb]);
     res.redirect('/ver/usuarios');
 });
 
