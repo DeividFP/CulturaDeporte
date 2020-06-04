@@ -102,7 +102,7 @@ router.get('/usuarios', isLoggedIn, async (req, res) => {
         let consulta = await pool.query('SELECT usr_mb, usr_statuss, reg_nom, reg_pri, reg_seg FROM usr join registro on usr.usr_mb = registro.reg_mb');
         let stat = [];
         for (let value of consulta) {
-            if (value.statuss != 1) {
+            if (value.usr_statuss != 1) {
                 value.statuss = true;
             } else {
                 value.statuss = false;
