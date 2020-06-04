@@ -296,7 +296,7 @@ router.get('/prestamo', isLoggedIn, async(req, res) => {
                 for (let value of consulta) {
                     let stat = await pool.query('SELECT mat_statuss FROM material WHERE mat_sku = ?', [sku]);
                     value.sku = sku;
-                    if (stat[0].statuss == 2) {
+                    if (stat[0].mat_statuss == 2) {
                         value.stat = true;
                     } else {
                         value.stat = false;

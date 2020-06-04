@@ -105,7 +105,9 @@ router.get('/recuperar', isNotLoggedIn, (req, res) => {
 
 router.post('/recuperar', async(req, res) => {
     const { email } = req.body;
-    let token = helpers.generateToken();
+    let consulta = await pool.query('SELECT reg_mb FROM registro WHERE reg_email = ?', [email]);
+    if (consulta.length > 0) {
+        let token = helpers.generateToken();
     let PR = Math.floor(Math.random() * ((10000000) - 10000) + 10000).toString();
     contentHTML = `
             <h2>Hola Tu contraseña temporal es: </h2>
@@ -134,9 +136,6 @@ router.post('/recuperar', async(req, res) => {
             console.log(error);
         }
     });
-
-    let consulta = await pool.query('SELECT reg_mb FROM registro WHERE reg_email = ?', [email]);
-    if (consulta.length > 0) {
         let nPa = await helpers.encryptPassword(PR);
         if (await pool.query('UPDATE usr SET usr_pass = ? WHERE usr_mb = ?', [nPa, consulta[0].reg_mb])) {
             req.flash('success', 'Se envió un correo electrónico');

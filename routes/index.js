@@ -45,7 +45,7 @@ router.post('/resultados', isLoggedIn, async(req, res) => {
 
         }
         for (let value of mat) {
-            if (value.statuss == 1) {
+            if (value.mat_statuss == 2) {
                 value.s = 'DISPONIBLE';
                 value.statuss = true;
             } else {
